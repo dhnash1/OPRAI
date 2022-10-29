@@ -21,7 +21,7 @@ button{
 
 .buttons{
 
-    
+    display: block;
     width : 33%;
     margin: auto;
     text-align: center;
@@ -29,7 +29,8 @@ button{
 }
 
 .buttons button{
-    width: 32%;
+    display: block;
+    width: auto;
     margin: auto;
 
 }
@@ -49,8 +50,9 @@ body{
 
 #mainBody {
 
-    width: 50%;
+    width: 75%;
     margin: auto;
+    padding : 1%;
     background-color: gray;
     border: 10px solid black;
     border-radius: 25px;
