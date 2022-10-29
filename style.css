@@ -1,0 +1,57 @@
+h1{
+
+    width: 70%;
+    margin: auto;
+
+}
+h3{
+    font-size : 20px;
+}
+button{
+    border : 3px solid black;
+    border-radius: 10px;
+}
+#logo{
+    display: block;
+    width: 15%;
+    margin: auto;
+    align-self: center;
+    background-color: green;
+}
+
+.buttons{
+
+    
+    width : 33%;
+    margin: auto;
+    text-align: center;
+
+}
+
+.buttons button{
+    width: 32%;
+    margin: auto;
+
+}
+
+html{
+    background-color: slategrey;
+    color: slategray;
+}
+body{
+    background-color: slategray;
+}
+
+#question {
+
+    text-align: center;
+}
+
+#mainBody {
+
+    width: 50%;
+    margin: auto;
+    background-color: gray;
+    border: 10px solid black;
+    border-radius: 25px;
+}
