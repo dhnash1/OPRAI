@@ -3,6 +3,9 @@ var dPrompt;
 var interactables;
 var unitType;
 var questionNumber = 0;
+var unitId = 0;
+var units = [];
+var activated = [];
 
 const htmlString = "<p> Test succesful! </p>";
 
@@ -52,7 +55,8 @@ function quizFunction(param){
             }
         $("#b1").html("<h3>Yes</h3>");
         $("#b2").html("<h3>No</h3>");
-        $("#b3").hide(); 
+        $("#b3").hide();
+        $("#b0").show(); 
         break;
         case 1 : //Are there any Objectives not under AI control?
             switch(param){
@@ -171,7 +175,7 @@ function quizFunction(param){
         $("#b1").hide();
         $("#b2").hide();
         $("#b3").hide(); 
-        $("#b0").show();
+        
     }
 
 }
@@ -187,6 +191,97 @@ function resetAll(){
     $("#question").text(prompts[questionNumber]);
 }
 
+function unitPicker(){
+    if(units.length > 0){
+        var min = Math.ceil(0);
+        var max = Math.floor(units.length);
+        console.log(units);
+        console.log("There are " + units.length + " Saved units");
+        var selectedUnit = Math.floor(Math.random() * (max - min) + min); 
+
+            $('#selectedUnit').html(units[selectedUnit].unitName + '<button onclick="selectedUnitDelete(' + units[selectedUnit].unitId + ')">X</button>');
+            activated.push(units[selectedUnit])
+            units.splice(selectedUnit, 1);
+            console.log("units " + units);
+            console.log("activated " + activated);
+            $('#unitList').empty();
+            unitList();
+    }else if(activated.length > 0){
+
+        units = activated;
+        activated = [];
+        unitPicker();
+    }else{
+        return;
+    }
+}
+
+$('#unitName').on('keypress', function (e) {
+
+    console.log("e = " + e);                                
+    if(e === 13){
+
+       //Disable textbox to prevent multiple submit
+       $(this).attr("disabled", "disabled");
+
+       console.log("entered");
+
+       //Enable the textbox again if needed.
+       $(this).removeAttr("disabled");
+    }
+});
+
+function unitAdderEnter(x){
+    if(x.keyCode == 13){
+        unitAdder();
+    }
+}
+function unitAdder(){
+    $('#unitList').empty();
+    if($("#unitName").val()){
+    console.log($("#unitName").val());
+    const object  = {
+        unitName : $("#unitName").val(),
+        unitId : unitId,
+        activated : false
+}   
+    units.push(object);
+    unitId++;
+    }
+    $("#unitName").val('');
+    console.log(unitId);
+    unitList()
+}
+
+function unitList(){
+    units.forEach(element => {
+        console.log(element);
+        $("#unitList").append('<li> <p>' + element.unitName + '</p> <button onclick="unitDelete(' + element.unitId + ')">X</button> </li>');
+    });
+}
+
+function unitDelete(x){
+    units.filter(obj => {
+        if(obj.unitId == x){
+            units.splice(units.indexOf(obj), 1);
+        }
+
+    })
+    activated.filter( obj =>{
+    if(obj.unitId == x){
+        activated.splice(units.indexOf(obj), 1);
+    }
+});
+    $('#unitList').empty();
+    unitList()
+}
+
+function selectedUnitDelete(x){
+
+    $('#selectedUnit').html('');
+    unitDelete(x);
+
+}
 
 
 $(function(){
@@ -207,3 +302,4 @@ $(function(){
 
 
 })
+

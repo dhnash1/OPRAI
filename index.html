@@ -13,16 +13,34 @@
   </head>
   <body>
     <img id="logo" src="Logo.jpg" alt="">
-<div id="mainBody">
+<div id="quizZone" class="mainElement" >
 <div class="title">
    <h1 id="question"></h1> 
 </div>
 <div class="buttons">
-  <button id="b0" onClick="resetAll()" style="display:none"><h3>RESET</h3></button>
   <button id="b1" onclick="quizFunction(0)"><h3>Shooting</h3></button>
   <button id="b2" onclick="quizFunction(1)"><h3>Melee</h3></button>
   <button id="b3" onclick="quizFunction(2)"><h3>Hybrid</h3></button>
+  <br>
+  <button id="b0" onClick="resetAll()" style="display:none"><h3>RESET</h3></button>
 </div>
+</div>
+<div id="unitPicker" class="mainElement">
+  
+  <h1 class="titleText">Unit Picker</h1>
+  <h2 id="selectedUnit"></h2>
+  <div class="buttonsUnit">
+  <button onclick="unitPicker()">Pick Unit</button>
+  <input type="text" id="unitName" onkeydown="unitAdderEnter(event)">
+  <button onclick="unitAdder()">Add Unit</button>
+  </div>
+  <div class="units">
+    <ul id="unitList">
+
+
+    </ul>
+  </div>
+
 </div>
 
 

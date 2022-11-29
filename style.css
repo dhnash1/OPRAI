@@ -22,16 +22,20 @@ button{
 .buttons{
 
     display: block;
-    width : 33%;
+    width : 50%;
     margin: auto;
+
     text-align: center;
 
 }
 
 .buttons button{
     display: block;
-    width: auto;
+    width: 100%;
     margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    
 
 }
 
@@ -43,12 +47,12 @@ body{
     background-color: slategray;
 }
 
-#question {
+#question, .titleText {
 
     text-align: center;
 }
 
-#mainBody {
+.mainElement {
 
     width: 75%;
     margin: auto;
@@ -56,4 +60,8 @@ body{
     background-color: gray;
     border: 10px solid black;
     border-radius: 25px;
+}
+.buttonsUnit {
+    text-align: center;
+
 }
